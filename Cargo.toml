@@ -1,0 +1,16 @@
+[package]
+name = "fraction"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0"
+
+[dependencies]
+
+[dev-dependencies]
+rand = "0.9.0"
+criterion = { version = "0.3", features = ["html_reports"] }
+
+[[bench]]
+name = "benchmark"
+harness = false
+opt-level = 3
