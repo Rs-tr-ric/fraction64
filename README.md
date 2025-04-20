@@ -4,7 +4,7 @@
 
 Rust实现的高精度分数类型，使用 `i64` 存储分子分母。支持数学运算、特殊值处理、安全类型转换及哈希
 
-（修改自 `i32` 的实现版本 [fraction](https://github.com/Rs-tr-ric/fraction/tree/master)）
+注：`i32` 的实现版本 [fraction](https://github.com/Rs-tr-ric/fraction/tree/master)
 
 ---
 
