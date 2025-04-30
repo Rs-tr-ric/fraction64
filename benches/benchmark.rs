@@ -45,32 +45,20 @@ fn sqrt_f64(n: f64) -> Option<f64> {
     }
 }
 
-fn sqrt_fraction_loop() {
-    for _ in 0..50000 {
-        sqrt_fraction(
-            Fraction::new(
-                black_box(rand::random_range(0..i64::MAX)), 
-                black_box(rand::random_range(1..i64::MAX))
-            )
-        );
-    }
-}
-
-fn sqrt_f64_loop() {
-    for _ in 0..50000 {
-        sqrt_f64(
-            black_box(rand::random_range(0..i64::MAX)) as f64 / 
-            black_box(rand::random_range(1..i64::MAX)) as f64
-        );
-    }
-}
-
 fn benchmark_fraction(c: &mut Criterion) {
-    c.bench_function("sqrt(fraction)", |b| b.iter(|| sqrt_fraction_loop()));
+    c.bench_function(
+        "sqrt(fraction)", 
+        |b| b.iter(
+            || sqrt_fraction(black_box(Fraction::new(rand::random_range(0..i64::MAX), rand::random_range(1..i64::MAX))))));
 }
 
 fn benchmark_f64(c: &mut Criterion) {
-    c.bench_function("sqrt(f64)", |b| b.iter(|| sqrt_f64_loop()));
+    c.bench_function(
+        "sqrt(f64)", 
+        |b| b.iter(
+            || sqrt_f64(black_box(rand::random_range(0..i64::MAX) as f64 / rand::random_range(0..i64::MAX) as f64))
+        )
+    );
 }
 
 criterion_group!(benches, benchmark_fraction, benchmark_f64);
