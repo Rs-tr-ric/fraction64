@@ -1040,8 +1040,8 @@ impl PartialOrd for Fraction {
             (Type::Normal, Type::Infinity) => Some(Ordering::Less), 
             (Type::Normal, Type::NegInfinity) => Some(Ordering::Less), 
             (Type::Normal, _) | (Type::Zero, _) => {
-                let (a, b) = (self.nume as i64, self.deno as i64);
-                let (c, d) = (other.nume as i64, other.deno as i64);
+                let (a, b) = (self.nume as i128, self.deno as i128);
+                let (c, d) = (other.nume as i128, other.deno as i128);
                 Some((a * d).cmp(&(b * c)))
             }
         }
